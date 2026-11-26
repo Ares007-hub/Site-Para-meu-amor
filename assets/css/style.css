@@ -1,0 +1,108 @@
+:root{
+  --night:#2a0f1e; --plum:#44162f; --rose:#e8788f; --blush:#ffe6ec; --gold:#e9c98f;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost',system-ui,sans-serif; --script:'Pinyon Script',cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;color:var(--blush);line-height:1.7;overflow-x:hidden;
+  background:radial-gradient(ellipse at 20% 0%,#5a1d3d 0,transparent 55%),radial-gradient(ellipse at 90% 60%,#3d1230 0,transparent 55%),var(--night);
+  background-attachment:fixed;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.script{font-family:var(--script);color:var(--gold);font-weight:400}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+/* pétalas */
+.petals{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.petal{position:absolute;top:-8vh;width:var(--s);height:calc(var(--s)*1.25);background:linear-gradient(135deg,var(--rose),#c4476a);
+  border-radius:150% 0 150% 0;opacity:.55;animation:fall var(--t) linear var(--dl) infinite}
+@keyframes fall{to{transform:translate3d(var(--x),112vh,0) rotate(540deg)}}
+main,.footer{position:relative;z-index:2}
+
+/* hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.25rem}
+.heart{width:clamp(90px,22vw,150px);margin-bottom:1rem;overflow:visible;filter:drop-shadow(0 0 22px rgba(232,120,143,.7))}
+.heart path{fill:transparent;stroke:var(--rose);stroke-width:1.6;stroke-dasharray:300;stroke-dashoffset:300;
+  animation:draw 2.4s ease forwards,fillh 1s 2.2s ease forwards,beat 1.6s 3.2s ease-in-out infinite;transform-origin:center}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fillh{to{fill:var(--rose)}}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.14)}30%{transform:scale(1)}45%{transform:scale(1.09)}}
+.hero-pre{font-size:clamp(1.8rem,5vw,2.6rem);opacity:0;animation:up 1s 1.4s forwards}
+.hero-name{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(4rem,19vw,10rem);line-height:1;letter-spacing:.02em;
+  background:linear-gradient(100deg,var(--blush) 20%,var(--gold) 45%,var(--rose) 60%,var(--blush) 80%);background-size:250% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;animation:up 1.2s 1.8s forwards,shine 6s 3s linear infinite}
+@keyframes shine{to{background-position:250% center}}
+.hero-sub{font-family:var(--serif);font-size:clamp(1.15rem,3.2vw,1.6rem);max-width:30ch;margin-top:1.2rem;opacity:0;animation:up 1s 2.5s forwards}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.scroll{margin-top:3rem;font-size:2rem;color:var(--gold);text-decoration:none;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(10px)}}
+
+/* seções */
+.section{max-width:1100px;margin:0 auto;padding:clamp(4rem,10vw,7rem) 1.25rem;text-align:center}
+.title{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(2.2rem,7vw,3.8rem);margin-bottom:2.2rem}
+.note{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--gold);margin-top:1.8rem}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease var(--d,0ms),transform .9s ease var(--d,0ms)}
+.reveal.in{opacity:1;transform:none}
+
+/* contador */
+.count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(.5rem,2vw,1.5rem);max-width:760px;margin:auto}
+.count-grid div{padding:1.4rem .4rem;border:1px solid rgba(233,201,143,.35);border-radius:999px 999px 18px 18px;background:rgba(255,255,255,.04);backdrop-filter:blur(6px)}
+.count-grid b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,6vw,3.2rem);color:var(--gold);line-height:1.1}
+.count-grid span{font-size:.85rem;opacity:.8}
+
+/* galeria */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2.4rem 1.6rem;padding:1rem 0}
+.polaroid{background:#fff8f6;color:#4a2030;padding:.8rem .8rem 1rem;border-radius:3px;cursor:pointer;
+  transform:rotate(var(--tilt));box-shadow:0 18px 40px rgba(0,0,0,.45);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.polaroid.reveal{transform:translateY(34px) rotate(var(--tilt))}
+.polaroid.reveal.in{transform:rotate(var(--tilt))}
+.polaroid.in:hover,.polaroid.in:focus-visible{transform:rotate(0) scale(1.06) translateY(-6px);box-shadow:0 28px 60px rgba(232,120,143,.45);z-index:3}
+.ph{aspect-ratio:4/5;overflow:hidden;background:#f3d9de}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.polaroid:hover img{transform:scale(1.08)}
+.ph-empty{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:3rem;color:var(--rose)}
+.ph-empty small{font-size:.7rem;color:#9a6b78;margin-top:.5rem;word-break:break-all;padding:0 .5rem}
+.polaroid figcaption{font-family:var(--serif);font-style:italic;font-size:1.35rem;margin-top:.8rem;line-height:1.25}
+.polaroid em{display:block;font-size:.95rem;color:#b0607a;font-style:normal;font-family:var(--sans);margin-top:.2rem}
+
+/* motivos */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.2rem;max-width:900px;margin:0 auto}
+.flip{position:relative;height:180px;border:0;background:none;perspective:900px;cursor:pointer;color:inherit;font:inherit}
+.face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;padding:1rem;border-radius:20px;
+  backface-visibility:hidden;transition:transform .7s cubic-bezier(.2,.8,.2,1);font-size:2rem}
+.front{background:linear-gradient(145deg,var(--rose),#a83a5c);color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.front strong{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.3rem}
+.back{transform:rotateY(180deg);background:rgba(255,230,236,.95);color:var(--plum);font-family:var(--serif);font-style:italic;font-size:1.2rem;line-height:1.3}
+.flip.on .front{transform:rotateY(-180deg)}.flip.on .back{transform:rotateY(0)}
+
+/* carta */
+.letter{max-width:640px;margin:auto;padding:clamp(2rem,6vw,3.5rem);text-align:left;color:var(--plum);
+  background:repeating-linear-gradient(#fff6f2 0 31px,#f2dcd8 31px 32px);border-radius:6px;box-shadow:0 24px 60px rgba(0,0,0,.5);
+  font-family:var(--serif);font-size:clamp(1.2rem,3.5vw,1.45rem);line-height:32px;position:relative}
+.letter::before{content:"♥";position:absolute;top:-1.1rem;right:1.5rem;font-size:2.4rem;color:var(--rose);animation:beat 1.6s infinite}
+.letter h2{color:#a83a5c;font-size:2.4rem;line-height:1.3;margin-bottom:1rem}
+.letter p+p{margin-top:32px}
+.sign{color:#a83a5c!important;font-size:1.9rem;line-height:1.4!important}
+
+/* rodapé, lightbox, música */
+.footer{text-align:center;padding:4rem 1rem 3rem;font-size:.95rem;opacity:.85}
+.footer .script{font-size:2.4rem}
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(20,5,14,.92);display:flex;align-items:center;justify-content:center;padding:1rem;animation:fade .3s}
+.lightbox[hidden]{display:none}
+.lightbox figure{max-width:min(92vw,900px);text-align:center}
+.lightbox img{max-width:100%;max-height:78vh;border:10px solid #fff8f6;border-radius:3px}
+.lightbox figcaption{font-family:var(--serif);font-style:italic;font-size:1.6rem;margin-top:1rem}
+.lb-close{position:absolute;top:1rem;right:1.2rem;background:none;border:0;color:#fff;font-size:2.6rem;cursor:pointer}
+@keyframes fade{from{opacity:0}}
+.music{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));z-index:20;width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--gold);background:rgba(42,15,30,.8);color:var(--gold);font-size:1.3rem;cursor:pointer}
+.music.on{animation:beat 1.6s infinite}
+
+@media (max-width:560px){
+  .count-grid{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:1fr 1fr;gap:1.6rem .8rem}
+  .polaroid figcaption{font-size:1.05rem}
+}
+@media (max-width:380px){.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal,.hero-pre,.hero-name,.hero-sub{opacity:1;transform:none}.heart path{stroke-dashoffset:0;fill:var(--rose)}
+}
