@@ -11,12 +11,12 @@ return [
     'music'     => 'musica.mp3',               // opcional: coloque em assets/ (ou deixe vazio '')
 
     'photos' => [
-        ['file' => 'foto1.jpg', 'caption' => 'Nosso primeiro encontro',  'date' => 'Jan 2023'],
-        ['file' => 'foto2.jpg', 'caption' => 'Aquele dia perfeito',      'date' => 'Mar 2023'],
-        ['file' => 'foto3.jpg', 'caption' => 'Rindo de nada, feliz de tudo', 'date' => 'Jun 2023'],
-        ['file' => 'foto4.jpg', 'caption' => 'Nossa viagem',             'date' => 'Dez 2023'],
-        ['file' => 'foto5.jpg', 'caption' => 'Você e eu, sempre',        'date' => 'Hoje'],
-        ['file' => 'foto6.jpg', 'caption' => 'Legenda da foto 6',        'date' => ''],
+        ['file' => 'foto1.jpeg'caption' => '',  'data' => ' 13 set 2024 '],
+        ['file' => 'foto2.jpeg'caption' => '','date' => '06 abril 2025'],
+        ['file' => 'foto3.jpeg'caption' => '', 'date' => '3 maio 2025'],
+        ['file' => 'foto4.jpeg'caption' => '','date' => '13 set 2025'],
+        ['file' => 'foto5.jpeg, 'caption' => '','date' => '12 jun 2025'],
+        ['file' => 'foto6.jpeg'caption' => '','date' => '12 jun 2026'],
     ],
 
     'letter_title' => 'Para você, meu amor',
