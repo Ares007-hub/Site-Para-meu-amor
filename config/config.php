@@ -6,7 +6,7 @@
 return [
     'her'       => 'Kellem',
     'him'       => 'SEU NOME',                 // <- troque
-    'start'     => '2023-01-01 00:00:00',      // <- data que começaram (AAAA-MM-DD HH:MM:SS)
+    'start'     => '2024-09-23 07:00:00',      // <- data que começaram (AAAA-MM-DD HH:MM:SS)
     'subtitle'  => 'Cada dia ao seu lado é o meu capítulo favorito.',
     'music'     => 'musica.mp3',               // opcional: coloque em assets/ (ou deixe vazio '')
 
